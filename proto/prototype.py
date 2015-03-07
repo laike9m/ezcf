@@ -16,12 +16,13 @@ import json
 class JsonImportFinder(object):
 
     def __init__(self, filepath=''):
-        print 'Creating JsonImportFinder for %s' % filepath
+        print('Creating JsonImportFinder for %s' % filepath)
         self.filepath = filepath
         return
 
     def find_module(self, fullname, path=None):
-        print 'JsonImportFinder looking for "%s" with path "%s"' % (fullname, path)
+        print('JsonImportFinder looking for "%s" with path "%s"' %
+              (fullname, path))
         if os.path.isfile(fullname + '.json'):
             return JsonImportLoader(fullname + '.json')
         else:
@@ -35,7 +36,7 @@ class JsonImportLoader(object):
         return
 
     def load_module(self, fullname):
-        print 'loading %s' % fullname
+        print('loading %s' % fullname)
         if fullname in sys.modules:
             mod = sys.modules[fullname]
         else:
@@ -56,7 +57,6 @@ class JsonImportLoader(object):
 
 
 if __name__ == '__main__':
-    # Install the meta-path finder
     sys.meta_path.append(JsonImportFinder())
     import sample_config
     from pprint import pprint
