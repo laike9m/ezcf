@@ -3,7 +3,6 @@ from pprint import pprint
 import prototype
 import unittest
 
-sys.meta_path.append(prototype.JsonImportFinder())
 from sample_config import *
 
 class TestProto(unittest.TestCase):

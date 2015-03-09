@@ -46,7 +46,7 @@ class JsonImportLoader(object):
         mod.__file__ = fullname
         mod.__name__ = fullname
         # always looks like a package
-        mod.__path__ = [ 'path-entry-goes-here' ]
+        mod.__path__ = ['path-entry-goes-here']
         mod.__loader__ = self
         mod.__package__ = '.'.join(fullname.split('.')[:-1])
 
@@ -55,6 +55,7 @@ class JsonImportLoader(object):
 
         return mod
 
+sys.meta_path.append(JsonImportFinder())
 
 if __name__ == '__main__':
     sys.meta_path.append(JsonImportFinder())

@@ -5,10 +5,6 @@ import unittest
 
 class TestProto(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        sys.meta_path.insert(0, prototype.JsonImportFinder())
-
     def test_import(self):
         import sample_config
         self.assertEqual(sample_config.hello, "world")
