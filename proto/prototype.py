@@ -18,7 +18,6 @@ class JsonImportFinder(object):
     def __init__(self, filepath=''):
         print('Creating JsonImportFinder for %s' % filepath)
         self.filepath = filepath
-        return
 
     def find_module(self, fullname, path=None):
         print('JsonImportFinder looking for "%s" with path "%s"' %
