@@ -1,6 +1,5 @@
-- [ ] test + prototype, 在不考虑错误处理的情况下实现JSON配置基本功能
-- [ ] 在版本>=3.4时是否使用importlib
-- [ ] 正式实现JSON(TDD)
-- [ ] 正式实现YAML
+- [ ] test + prototype
+- [ ] JSON support(TDD)
+- [ ] YAML support
 - [ ] CI + coverage
 - [ ] pypi
