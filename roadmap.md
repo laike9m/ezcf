@@ -1,4 +1,5 @@
-- [ ] test + prototype
+- [x] test + prototype
+- [ ] Use dot to seperate folder/subfolder/file
 - [ ] JSON support(TDD)
 - [ ] YAML support
 - [ ] CI + coverage

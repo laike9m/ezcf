@@ -9,17 +9,21 @@ class FileNotFoundError(Exception):
     pass
 
 
-class BaseFinder():
+class _BaseClass(object):
+    pass
+
+
+class BaseFinder(_BaseClass):
 
     def __init__(self, filepath=''):
         self.filepath = filepath
         return
 
-    def find_module(self):
+    def find_module(self, fullname, path=None):
         raise NotImplementedError()
 
 
-class BaseLoader():
+class BaseLoader(_BaseClass):
 
     def __init__(self, path_entry):
         self.path_entry = path_entry
