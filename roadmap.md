@@ -1,5 +1,6 @@
 - [x] test + prototype
 - [ ] Use dot to seperate folder/subfolder/file
+- [ ] Import same cfg file multiple times from different locations
 - [ ] JSON support(TDD)
 - [ ] YAML support
 - [ ] CI + coverage
