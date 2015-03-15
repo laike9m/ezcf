@@ -17,12 +17,11 @@ class _BaseClass(object):
 
 class BaseFinder(_BaseClass):
 
-    def __init__(self, filepath=''):
-        self.filepath = filepath
+    def __init__(self, *args, **kwargs):
         f = inspect.currentframe().f_back.f_back
         # get file location of which calls 'import'
-        caller_file_location = os.path.realpath(f.f_locals['__file__'])
-        print(caller_file_location)
+        caller_file_abspath = os.path.realpath(f.f_locals['__file__'])
+        self.dir = os.path.dirname(caller_file_abspath)
         return
 
 
@@ -32,8 +31,8 @@ class BaseFinder(_BaseClass):
 
 class BaseLoader(_BaseClass):
 
-    def __init__(self, path_entry):
-        self.path_entry = path_entry
+    def __init__(self, dir):
+        self.dir = dir
 
     def load_module(self, fullname):
         if fullname in sys.modules:
