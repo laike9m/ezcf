@@ -1,6 +1,7 @@
 import sys
-from pprint import pprint
 import unittest
+
+sys.path.append('../')
 import ezcf
 
 from sample_config import *

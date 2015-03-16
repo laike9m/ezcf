@@ -1,6 +1,9 @@
-import ezcf
-from pprint import pprint
+import sys
 import unittest
+import os
+
+sys.path.append('../')
+import ezcf
 
 class TestProto(unittest.TestCase):
 
