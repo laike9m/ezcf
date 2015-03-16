@@ -24,7 +24,6 @@ class BaseFinder(_BaseClass):
         self.dir = os.path.dirname(file)
         return
 
-
     def find_module(self, fullname, path=None):
         raise NotImplementedError()
 

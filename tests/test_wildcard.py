@@ -4,7 +4,7 @@ import unittest
 sys.path.append('../')
 import ezcf
 
-from sample_config import *
+from sample_json import *
 
 class TestProto(unittest.TestCase):
 
