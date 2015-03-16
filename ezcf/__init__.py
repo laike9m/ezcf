@@ -1,4 +1,4 @@
-__author__ = 'laike9m'
+__author__ = "laike9m (laike9m@gmail.com)"
 __title__ = 'ezcf'
 __version__ = '0.0.1'
 # __build__ = None

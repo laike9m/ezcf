@@ -14,3 +14,8 @@ script:
   - cd tests
   - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then unit2 discover
   - python -m unittest discover
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
