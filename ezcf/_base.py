@@ -20,8 +20,8 @@ class BaseFinder(_BaseClass):
     def __init__(self, *args, **kwargs):
         f = inspect.currentframe().f_back.f_back
         # get file location of which calls 'import'
-        caller_file_abspath = os.path.realpath(f.f_locals['__file__'])
-        self.dir = os.path.dirname(caller_file_abspath)
+        file = inspect.getfile(sys._getframe(2))
+        self.dir = os.path.dirname(file)
         return
 
 
