@@ -23,8 +23,9 @@ class TestProto(unittest.TestCase):
             "key1": 1000,
             "key2": ["what", 100]
         })
-        with self.assertRaises(NameError):
-            print(hello)
+        if sys.version_info[:2] > (2, 6):
+            with self.assertRaises(NameError):
+                print(hello)
 
     def test_import_as(self):
         import sample_config as config
@@ -62,8 +63,9 @@ class TestProto(unittest.TestCase):
             "key1": 1000,
             "key2": ["what", 100]
         })
-        with self.assertRaises(NameError):
-            print(hello)
+        if sys.version_info[:2] > (2, 6):
+            with self.assertRaises(NameError):
+                print(hello)
 
     def test_import_as_subdir(self):
         import subdir.sample_config as config
