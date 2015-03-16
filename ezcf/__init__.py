@@ -7,7 +7,9 @@ __copyright__ = 'Copyright 2015 laike9m'
 
 import sys
 from .type_json import JsonFinder
+from .type_yaml import YamlFinder
 
 sys.meta_path.append(JsonFinder())
+sys.meta_path.append(YamlFinder())
 
 
