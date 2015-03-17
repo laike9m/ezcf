@@ -7,13 +7,14 @@ import inspect
 import os
 import sys
 
-class FileNotFoundError(Exception):
+
+class InvalidJsonError(Exception):
     pass
 
-class FileFormatError(Exception):
 
-    def __repr__(self, msg):
-        return "FFFF"
+class InvalidYamlError(Exception):
+    pass
+
 
 class _BaseClass(object):
     pass

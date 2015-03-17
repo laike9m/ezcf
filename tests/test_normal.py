@@ -307,7 +307,13 @@ class TestProto(unittest.TestCase):
         self.assertEqual(w, 'A slightly different error message.')
 
     def test_invalid_json(self):
-        from ezcf._base import FileFormatError
+        from ezcf._base import InvalidJsonError
         if sys.version_info[:2] > (2, 6):
-            with self.assertRaises(FileFormatError):
+            with self.assertRaises(InvalidJsonError):
                 import invalid_json
+
+    def test_invalid_yaml(self):
+        from ezcf._base import InvalidYamlError
+        if sys.version_info[:2] > (2, 6):
+            with self.assertRaises(InvalidYamlError):
+                import invalid_yaml

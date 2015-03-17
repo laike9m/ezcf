@@ -2,7 +2,7 @@ import os
 import sys
 import yaml
 
-from ._base import BaseFinder, BaseLoader
+from ._base import BaseFinder, BaseLoader, InvalidYamlError
 
 
 class YamlFinder(BaseFinder):
@@ -23,7 +23,11 @@ class YamlFinder(BaseFinder):
 
 class YamlLoader(BaseLoader):
 
+    TYPE = 'yaml'
+
     def __init__(self, *args, **kwargs):
+        self.e = None
+        self.err_msg = None
         super(YamlLoader, self).__init__(*args, **kwargs)
 
     def load_module(self, fullname):
@@ -36,9 +40,22 @@ class YamlLoader(BaseLoader):
         if '.' in fullname:
             fullname = os.path.join(*([self.dir] + fullname.split('.')))
 
-        with open(fullname + '.yaml') as f:
-            for doc in yaml.load_all(f, yaml.Loader):
-                mod.__dict__.update(doc)
+        fullname = fullname + '.' + self.TYPE
+
+        with open(fullname) as f:
+            try:
+                for doc in yaml.load_all(f, yaml.Loader):
+                    if isinstance(doc, dict):
+                        mod.__dict__.update(doc)
+            except yaml.YAMLError:
+                self.e = "YAMLError"
+                self.err_msg = sys.exc_info()[1]
+
+        if self.e == "YAMLError":
+            err_msg = '\n' + self.TYPE + " not valid: "
+            err_msg += fullname + '\n'
+            err_msg += str(self.err_msg)
+            raise InvalidYamlError(err_msg)
 
         return mod
 
