@@ -17,6 +17,8 @@ class YamlFinder(BaseFinder):
 
         if os.path.isfile(fullname + '.yaml'):
             return YamlLoader(self.dir)
+        elif os.path.isfile(fullname + '.yml'):
+            return YamlLoader(self.dir, extension='yml')
         else:
             return None
 
@@ -25,10 +27,11 @@ class YamlLoader(BaseLoader):
 
     TYPE = 'yaml'
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, dir, extension=None):
         self.e = None
         self.err_msg = None
-        super(YamlLoader, self).__init__(*args, **kwargs)
+        self.TYPE = extension if extension else self.TYPE
+        super(YamlLoader, self).__init__(dir)
 
     def load_module(self, fullname):
         """

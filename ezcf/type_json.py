@@ -24,10 +24,10 @@ class JsonLoader(BaseLoader):
 
     TYPE = 'json'
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, dir):
         self.e = None
         self.err_msg = None
-        super(JsonLoader, self).__init__(*args, **kwargs)
+        super(JsonLoader, self).__init__(dir)
 
     def load_module(self, fullname):
         """

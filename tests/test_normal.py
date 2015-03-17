@@ -25,13 +25,28 @@ class TestProto(unittest.TestCase):
         self.assertEqual(
             sample_yaml.Stack,
             [{'code': 'x = MoreObject("345\\n")\n',
-            'file': 'TopClass.py',
-            'line': 23},
+              'file': 'TopClass.py',
+              'line': 23},
             {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
         self.assertEqual(sample_yaml.Time,
                          datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(sample_yaml.User, 'ed')
         self.assertEqual(sample_yaml.warning,
+                         'A slightly different error message.')
+        import sample_yml
+        self.assertEqual(sample_yml.Date,
+                         datetime.datetime(2001, 11, 23, 20, 3, 17))
+        self.assertEqual(sample_yml.Fatal, 'Unknown variable "bar"')
+        self.assertEqual(
+            sample_yml.Stack,
+            [{'code': 'x = MoreObject("345\\n")\n',
+              'file': 'TopClass.py',
+              'line': 23},
+             {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
+        self.assertEqual(sample_yml.Time,
+                         datetime.datetime(2001, 11, 23, 20, 2, 31))
+        self.assertEqual(sample_yml.User, 'ed')
+        self.assertEqual(sample_yml.warning,
                          'A slightly different error message.')
 
     def test_from_import(self):
