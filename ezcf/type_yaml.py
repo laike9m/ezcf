@@ -7,7 +7,7 @@ from ._base import BaseFinder, BaseLoader
 
 class YamlFinder(BaseFinder):
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(YamlFinder, self).__init__(*args, **kwargs)
 
     def find_module(self, fullname, path=None):
@@ -23,7 +23,7 @@ class YamlFinder(BaseFinder):
 
 class YamlLoader(BaseLoader):
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(YamlLoader, self).__init__(*args, **kwargs)
 
     def load_module(self, fullname):

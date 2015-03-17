@@ -6,7 +6,7 @@ from ._base import BaseFinder, BaseLoader
 
 class JsonFinder(BaseFinder):
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(JsonFinder, self).__init__(*args, **kwargs)
 
     def find_module(self, fullname, path=None):
@@ -22,7 +22,7 @@ class JsonFinder(BaseFinder):
 
 class JsonLoader(BaseLoader):
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(JsonLoader, self).__init__(*args, **kwargs)
 
     def load_module(self, fullname):
