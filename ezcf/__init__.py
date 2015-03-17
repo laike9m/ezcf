@@ -6,10 +6,8 @@ __license__ = 'Apache 2.0'
 __copyright__ = 'Copyright 2015 laike9m'
 
 import sys
-from .type_json import JsonFinder
-from .type_yaml import YamlFinder
+from .api import ConfigFinder
 
-sys.meta_path.append(JsonFinder())
-sys.meta_path.append(YamlFinder())
+sys.meta_path.append(ConfigFinder())
 
 
