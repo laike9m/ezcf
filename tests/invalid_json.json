@@ -1,0 +1,8 @@
+{
+  "hello": "world",
+  "a_list": [1 ,2, 3]
+  "a_dict": {
+    "key1": 1000,
+    "key2": ["what", 100]
+  }
+}

@@ -1,7 +1,7 @@
 import os
 import json
 import sys
-from ._base import BaseFinder, BaseLoader
+from ._base import BaseFinder, BaseLoader, FileFormatError
 
 
 class JsonFinder(BaseFinder):
@@ -22,7 +22,10 @@ class JsonFinder(BaseFinder):
 
 class JsonLoader(BaseLoader):
 
+    TYPE = 'json'
+
     def __init__(self, *args, **kwargs):
+        self.e = None
         super(JsonLoader, self).__init__(*args, **kwargs)
 
     def load_module(self, fullname):
@@ -35,7 +38,20 @@ class JsonLoader(BaseLoader):
         if '.' in fullname:
             fullname = os.path.join(*([self.dir] + fullname.split('.')))
 
-        with open(fullname + '.json') as f:
-            mod.__dict__.update(json.load(f))
+        fullname = fullname + '.' + self.TYPE
+
+        try:
+            with open(fullname) as f:
+                mod.__dict__.update(json.load(f))
+        except ValueError:
+            # if raise here, traceback will contain ValueError
+            self.e = "ValueError"
+            self.err_msg = sys.exc_info()[1]
+
+        if self.e == "ValueError":
+            err_msg = '\n\t' + self.TYPE + " not valid: "
+            err_msg += fullname + '\n'
+            err_msg += '\t' + str(self.err_msg)
+            raise FileFormatError(err_msg)
 
         return mod

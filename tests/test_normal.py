@@ -305,3 +305,9 @@ class TestProto(unittest.TestCase):
         self.assertEqual(t, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(u, 'ed')
         self.assertEqual(w, 'A slightly different error message.')
+
+    def test_invalid_json(self):
+        from ezcf._base import FileFormatError
+        if sys.version_info[:2] > (2, 6):
+            with self.assertRaises(FileFormatError):
+                import invalid_json

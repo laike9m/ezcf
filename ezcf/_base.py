@@ -10,6 +10,10 @@ import sys
 class FileNotFoundError(Exception):
     pass
 
+class FileFormatError(Exception):
+
+    def __repr__(self, msg):
+        return "FFFF"
 
 class _BaseClass(object):
     pass
