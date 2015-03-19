@@ -1,5 +1,7 @@
 - [x] test + prototype
 - [ ] Use dot to seperate folder/subfolder/file
+- [ ] Unicode support
+- [ ] Auto encoding detect?
 - [ ] Import same cfg file multiple times from different locations
 - [ ] JSON support(TDD)
 - [ ] YAML support

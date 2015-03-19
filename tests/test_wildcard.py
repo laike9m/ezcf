@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import datetime
 import sys
 import unittest
@@ -16,7 +18,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(a_list, [1 ,2, 3])
         self.assertEqual(a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         self.assertEqual(Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
         self.assertEqual(Fatal, 'Unknown variable "bar"')
@@ -28,4 +30,4 @@ class TestProto(unittest.TestCase):
              {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
         self.assertEqual(Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(User, 'ed')
-        self.assertEqual(warning, 'A slightly different error message.')
+        self.assertEqual(warning, u'一个 slightly different error message.')

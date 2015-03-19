@@ -1,5 +1,6 @@
 import os
 import sys
+import codecs
 import yaml
 
 from ._base import BaseFinder, BaseLoader, InvalidYamlError
@@ -45,7 +46,7 @@ class YamlLoader(BaseLoader):
 
         fullname = fullname + '.' + self.TYPE
 
-        with open(fullname) as f:
+        with codecs.open(fullname, 'r', 'utf-8') as f:
             try:
                 for doc in yaml.load_all(f, yaml.Loader):
                     if isinstance(doc, dict):

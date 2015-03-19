@@ -1,6 +1,7 @@
 import os
 import json
 import sys
+import codecs
 from ._base import BaseFinder, BaseLoader, InvalidJsonError
 
 
@@ -42,7 +43,7 @@ class JsonLoader(BaseLoader):
         fullname = fullname + '.' + self.TYPE
 
         try:
-            with open(fullname) as f:
+            with codecs.open(fullname, 'r', 'utf-8') as f:
                 mod.__dict__.update(json.load(f))
         except ValueError:
             # if raise here, traceback will contain ValueError

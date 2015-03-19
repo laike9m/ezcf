@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import sys
 import unittest
 import os
@@ -16,7 +18,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sample_json.a_list, [1 ,2, 3])
         self.assertEqual(sample_json.a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         import sample_yaml
         self.assertEqual(sample_yaml.Date,
@@ -32,7 +34,7 @@ class TestProto(unittest.TestCase):
                          datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(sample_yaml.User, 'ed')
         self.assertEqual(sample_yaml.warning,
-                         'A slightly different error message.')
+                         u'一个 slightly different error message.')
         import sample_yml
         self.assertEqual(sample_yml.Date,
                          datetime.datetime(2001, 11, 23, 20, 3, 17))
@@ -54,7 +56,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(a_list, [1 ,2, 3])
         self.assertEqual(a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         from sample_yaml import Date, Fatal, Stack, Time, User
         self.assertEqual(Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
@@ -80,7 +82,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sj.a_list, [1 ,2, 3])
         self.assertEqual(sj.a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         import sample_yaml as sy
         self.assertEqual(sy.Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
@@ -93,7 +95,7 @@ class TestProto(unittest.TestCase):
               {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
         self.assertEqual(sy.Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(sy.User, 'ed')
-        self.assertEqual(sy.warning, 'A slightly different error message.')
+        self.assertEqual(sy.warning, u'一个 slightly different error message.')
 
     def test_from_import_as(self):
         from sample_json import hello as h
@@ -103,7 +105,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(al, [1 ,2, 3])
         self.assertEqual(ad, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         from sample_yaml import Date as d
         from sample_yaml import Fatal as f
@@ -121,7 +123,7 @@ class TestProto(unittest.TestCase):
               {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
         self.assertEqual(t, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(u, 'ed')
-        self.assertEqual(w, 'A slightly different error message.')
+        self.assertEqual(w, u'一个 slightly different error message.')
 
     def test_import_subdir(self):
         import subdir.sample_json
@@ -129,7 +131,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(subdir.sample_json.a_list, [1 ,2, 3])
         self.assertEqual(subdir.sample_json.a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         import subdir.sample_yaml
         self.assertEqual(subdir.sample_yaml.Date,
@@ -153,7 +155,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(a_list, [1 ,2, 3])
         self.assertEqual(a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         from subdir.sample_yaml import Date, Fatal, Stack, Time, User
         self.assertEqual(Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
@@ -179,7 +181,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sj.a_list, [1 ,2, 3])
         self.assertEqual(sj.a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         import subdir.sample_yaml as sy
         self.assertEqual(sy.Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
@@ -202,7 +204,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(al, [1 ,2, 3])
         self.assertEqual(ad, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         from subdir.sample_yaml import Date as d
         from subdir.sample_yaml import Fatal as f
@@ -228,7 +230,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(subdir.subdir.sample_json.a_list, [1 ,2, 3])
         self.assertEqual(subdir.subdir.sample_json.a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         import subdir.subdir.sample_yaml
         self.assertEqual(subdir.subdir.sample_yaml.Date,
@@ -252,7 +254,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(a_list, [1 ,2, 3])
         self.assertEqual(a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         from subdir.subdir.sample_yaml import Date, Fatal, Stack, Time, User
         self.assertEqual(Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
@@ -278,7 +280,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(config.a_list, [1 ,2, 3])
         self.assertEqual(config.a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         import subdir.subdir.sample_yaml as sy
         self.assertEqual(sy.Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
@@ -301,7 +303,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(al, [1 ,2, 3])
         self.assertEqual(ad, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         from subdir.subdir.sample_yaml import Date as d
         from subdir.subdir.sample_yaml import Fatal as f

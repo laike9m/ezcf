@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import datetime
 import sys
 import unittest
@@ -16,7 +18,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(a_list, [1 ,2, 3])
         self.assertEqual(a_dict, {
             "key1": 1000,
-            "key2": ["what", 100]
+            "key2": [u"你好", 100]
         })
         self.assertEqual(Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
         self.assertEqual(Fatal, 'Unknown variable "bar"')
