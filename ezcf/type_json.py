@@ -12,11 +12,10 @@ class JsonFinder(BaseFinder):
 
     def find_module(self, fullname, path=None):
 
-        if '.' in fullname:
-            fullname = os.path.join(*([self.dir] + fullname.split('.')))
+        cfg_file, caller_file_dir = self.get_cfg_filepath(fullname)
 
-        if os.path.isfile(fullname + '.json'):
-            return JsonLoader(self.dir)
+        if os.path.isfile(cfg_file + '.json'):
+            return JsonLoader(caller_file_dir)
         else:
             return None
 

@@ -13,13 +13,12 @@ class YamlFinder(BaseFinder):
 
     def find_module(self, fullname, path=None):
 
-        if '.' in fullname:
-            fullname = os.path.join(*([self.dir] + fullname.split('.')))
+        cfg_file, caller_file_dir = self.get_cfg_filepath(fullname)
 
-        if os.path.isfile(fullname + '.yaml'):
-            return YamlLoader(self.dir)
-        elif os.path.isfile(fullname + '.yml'):
-            return YamlLoader(self.dir, extension='yml')
+        if os.path.isfile(cfg_file + '.yaml'):
+            return YamlLoader(caller_file_dir)
+        elif os.path.isfile(cfg_file + '.yml'):
+            return YamlLoader(caller_file_dir, extension='yml')
         else:
             return None
 

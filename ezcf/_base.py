@@ -23,13 +23,18 @@ class _BaseClass(object):
 class BaseFinder(_BaseClass):
 
     def __init__(self, *args, **kwargs):
-        # get file location of which calls 'import'
-        file = inspect.getfile(sys._getframe(4))
-        self.dir = os.path.dirname(file)
-        return
+        pass
 
-    def find_module(self, fullname, path=None):
+    def find_module(self, *args, **kwargs):
         raise NotImplementedError()
+
+    def get_cfg_filepath(self, fullname):
+        # get file location of which calls 'import'
+        file = inspect.getfile(sys._getframe(3))
+        dir = os.path.dirname(file)
+        if '.' in fullname:
+            fullname = os.path.join(*([dir] + fullname.split('.')))
+        return fullname, dir
 
 
 class BaseLoader(_BaseClass):
