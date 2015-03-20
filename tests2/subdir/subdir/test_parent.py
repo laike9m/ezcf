@@ -11,14 +11,14 @@ import ezcf
 class TestProto(unittest.TestCase):
 
     def test_import(self):
-        from . import sample_json
+        from .. import sample_json
         self.assertEqual(sample_json.hello, "world")
         self.assertEqual(sample_json.a_list, [1 ,2, 3])
         self.assertEqual(sample_json.a_dict, {
             "key1": 1000,
             "key2": [u"你好", 100]
         })
-        import sample_yaml
+        from .. import sample_yaml
         self.assertEqual(sample_yaml.Date,
                          datetime.datetime(2001, 11, 23, 20, 3, 17))
         self.assertEqual(sample_yaml.Fatal, 'Unknown variable "bar"')
@@ -33,21 +33,6 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sample_yaml.User, 'ed')
         self.assertEqual(sample_yaml.warning,
                          u'一个 slightly different error message.')
-        from .. import sample_yml
-        self.assertEqual(sample_yml.Date,
-                         datetime.datetime(2001, 11, 23, 20, 3, 17))
-        self.assertEqual(sample_yml.Fatal, 'Unknown variable "bar"')
-        self.assertEqual(
-            sample_yml.Stack,
-            [{'code': 'x = MoreObject("345\\n")\n',
-              'file': 'TopClass.py',
-              'line': 23},
-             {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
-        self.assertEqual(sample_yml.Time,
-                         datetime.datetime(2001, 11, 23, 20, 2, 31))
-        self.assertEqual(sample_yml.User, 'ed')
-        self.assertEqual(sample_yml.warning,
-                         'A slightly different error message.')
 
     def test_from_import(self):
         from ..sample_json import a_list, a_dict
@@ -56,7 +41,7 @@ class TestProto(unittest.TestCase):
             "key1": 1000,
             "key2": [u"你好", 100]
         })
-        from sample_yaml import Date, Fatal, Stack, Time, User
+        from ..sample_yaml import Date, Fatal, Stack, Time, User
         self.assertEqual(Date, datetime.datetime(2001, 11, 23, 20, 3, 17))
         self.assertEqual(Fatal, 'Unknown variable "bar"')
         self.assertEqual(

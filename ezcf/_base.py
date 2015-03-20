@@ -28,13 +28,26 @@ class BaseFinder(_BaseClass):
     def find_module(self, *args, **kwargs):
         raise NotImplementedError()
 
+    @staticmethod
+    def get_parent(path, level=1):
+        for _ in range(level):
+            path = os.path.dirname(path)
+        return path
+
     def get_cfg_filepath(self, fullname):
         # get file location of which calls 'import'
-        file = inspect.getfile(sys._getframe(3))
-        dir = os.path.dirname(file)
+        caller_frame = sys._getframe(3)
+        file = inspect.getfile(caller_frame)
+        caller_file_dir = os.path.dirname(file)
+        if '__name__' in caller_frame.f_globals:
+            if '.' in caller_frame.f_globals['__name__']:  # find top packge
+                up_level = len(caller_frame.f_globals['__name__'].split('.'))
+                caller_file_dir = self.get_parent(caller_file_dir, up_level-1)
+
         if '.' in fullname:
-            fullname = os.path.join(*([dir] + fullname.split('.')))
-        return fullname, dir
+            fullname = os.path.join(*([caller_file_dir] + fullname.split('.')))
+
+        return fullname, caller_file_dir
 
 
 class BaseLoader(_BaseClass):
