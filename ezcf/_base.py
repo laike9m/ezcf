@@ -40,7 +40,7 @@ class BaseFinder(_BaseClass):
         file = inspect.getfile(caller_frame)
         caller_file_dir = os.path.dirname(file)
         if '__name__' in caller_frame.f_globals:
-            if '.' in caller_frame.f_globals['__name__']:  # find top packge
+            if '.' in caller_frame.f_globals['__name__']:  # find top package
                 up_level = len(caller_frame.f_globals['__name__'].split('.'))
                 caller_file_dir = self.get_parent(caller_file_dir, up_level-1)
 
