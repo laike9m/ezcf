@@ -8,26 +8,26 @@ from ._base import BaseFinder, BaseLoader, InvalidJsonError
 class JsonFinder(BaseFinder):
 
     def __init__(self, *args, **kwargs):
+        self.ext_name = ".json"
         super(JsonFinder, self).__init__(*args, **kwargs)
 
     def find_module(self, fullname, path=None):
 
-        cfg_file, caller_file_dir = self.get_cfg_filepath(fullname)
+        cfg_file = self.get_cfg_filepath(fullname)
 
-        if os.path.isfile(cfg_file + '.json'):
-            return JsonLoader(caller_file_dir)
+        if os.path.isfile(cfg_file + self.ext_name):
+            return JsonLoader(cfg_file + self.ext_name)
         else:
             return None
 
 
 class JsonLoader(BaseLoader):
 
-    TYPE = 'json'
-
-    def __init__(self, dir):
+    def __init__(self, cfg_file, *args, **kwargs):
         self.e = None
         self.err_msg = None
-        super(JsonLoader, self).__init__(dir)
+        self.cfg_file = cfg_file
+        super(JsonLoader, self).__init__(*args, **kwargs)
 
     def load_module(self, fullname):
         """
@@ -36,13 +36,8 @@ class JsonLoader(BaseLoader):
         """
         mod = super(JsonLoader, self).load_module(fullname)
 
-        if '.' in fullname:
-            fullname = os.path.join(*([self.dir] + fullname.split('.')))
-
-        fullname = fullname + '.' + self.TYPE
-
         try:
-            with codecs.open(fullname, 'r', 'utf-8') as f:
+            with codecs.open(self.cfg_file, 'r', 'utf-8') as f:
                 mod.__dict__.update(json.load(f))
         except ValueError:
             # if raise here, traceback will contain ValueError
@@ -50,8 +45,8 @@ class JsonLoader(BaseLoader):
             self.err_msg = sys.exc_info()[1]
 
         if self.e == "ValueError":
-            err_msg = '\n' + self.TYPE + " not valid: "
-            err_msg += fullname + '\n'
+            err_msg = "\nJson not valid: "
+            err_msg += self.cfg_file + '\n'
             err_msg += str(self.err_msg)
             raise InvalidJsonError(err_msg)
 

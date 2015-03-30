@@ -13,25 +13,23 @@ class YamlFinder(BaseFinder):
 
     def find_module(self, fullname, path=None):
 
-        cfg_file, caller_file_dir = self.get_cfg_filepath(fullname)
+        cfg_file = self.get_cfg_filepath(fullname)
 
         if os.path.isfile(cfg_file + '.yaml'):
-            return YamlLoader(caller_file_dir)
+            return YamlLoader(cfg_file + '.yaml')
         elif os.path.isfile(cfg_file + '.yml'):
-            return YamlLoader(caller_file_dir, extension='yml')
+            return YamlLoader(cfg_file + '.yml')
         else:
             return None
 
 
 class YamlLoader(BaseLoader):
 
-    TYPE = 'yaml'
-
-    def __init__(self, dir, extension=None):
+    def __init__(self, cfg_file, *args, **kwargs):
         self.e = None
         self.err_msg = None
-        self.TYPE = extension if extension else self.TYPE
-        super(YamlLoader, self).__init__(dir)
+        self.cfg_file = cfg_file
+        super(YamlLoader, self).__init__(*args, **kwargs)
 
     def load_module(self, fullname):
         """
@@ -40,12 +38,7 @@ class YamlLoader(BaseLoader):
         """
         mod = super(YamlLoader, self).load_module(fullname)
 
-        if '.' in fullname:
-            fullname = os.path.join(*([self.dir] + fullname.split('.')))
-
-        fullname = fullname + '.' + self.TYPE
-
-        with codecs.open(fullname, 'r', 'utf-8') as f:
+        with codecs.open(self.cfg_file, 'r', 'utf-8') as f:
             try:
                 for doc in yaml.load_all(f, yaml.Loader):
                     if isinstance(doc, dict):
@@ -55,8 +48,8 @@ class YamlLoader(BaseLoader):
                 self.err_msg = sys.exc_info()[1]
 
         if self.e == "YAMLError":
-            err_msg = '\n' + self.TYPE + " not valid: "
-            err_msg += fullname + '\n'
+            err_msg = "\nYaml not valid: "
+            err_msg += self.cfg_file + '\n'
             err_msg += str(self.err_msg)
             raise InvalidYamlError(err_msg)
 

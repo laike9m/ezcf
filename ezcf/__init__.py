@@ -9,5 +9,3 @@ import sys
 from .api import ConfigFinder
 
 sys.meta_path.append(ConfigFinder())
-
-
