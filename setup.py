@@ -9,14 +9,13 @@ def read():
 
 setup(
     name='ezcf',
-    version='0.0.1.dev1',
+    version='0.0.1',
     description='Import JSON/YAML like importing .py files',
     long_description=read(),
     url='http://github.com/laike9m/ezcf/',
     license='MIT',
     author='laike9m',
     author_email='laike9m@gmail.com',
-    # packages=['ezcf'],
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     package_data={'': ['README.md']},
     keywords = ['config', 'import'],
