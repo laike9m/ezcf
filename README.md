@@ -9,6 +9,7 @@ ezcf stands for **easy configuration**, it allows you to import JSON/YAML
 like importing .py files, which is very useful for reading conf files with these formats.
 
 OK, stop talking, show us some code!  
+
 On the left is what you'll normally do, on the right is the ezcf way. Much more elegant isn't it?
 
 ![](https://github.com/laike9m/ezcf/raw/master/code_compare.png)

@@ -9,7 +9,7 @@ def read():
 
 setup(
     name='ezcf',
-    version='0.0.1',
+    version='0.0.1post1',
     description='Import JSON/YAML like importing .py files',
     long_description=read(),
     url='http://github.com/laike9m/ezcf/',
