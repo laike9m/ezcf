@@ -52,6 +52,7 @@ What about relative import? Yes, `ezcf` supports relative import, as long as you
 See [tests2](https://github.com/laike9m/ezcf/tree/master/tests2) for an example.
 
 Something to note before using ezcf:
+
 1. `ezcf` is still in developement. If you find any bug, please report
 it in issues;
 2. Be careful importing YAML which contains multiple documents: if there exists keys with the same name,
