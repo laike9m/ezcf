@@ -21,7 +21,7 @@ If you run into `error: yaml.h: No such file or directory`, don't worry,
 you can still use ezcf without any problem.
 
 ## Sample Usage
-`ezcf` supports all kinds of valid import statements, here's an example:
+ezcf supports all kinds of valid import statements, here's an example:
 ```
 ├── subdir
 │   ├── __init__.py
@@ -48,12 +48,12 @@ import sample_json as sj
 ```
 You can assume they're just regular python files.(Currently ezcf only supports files with utf-8 encoding)
 
-What about relative import? Yes, `ezcf` supports relative import, as long as you use it *correctly*.
+What about relative import? Yes, ezcf supports relative import, as long as you use it *correctly*.
 See [tests2](https://github.com/laike9m/ezcf/tree/master/tests2) for an example.
 
 Something to note before using ezcf:
 
-1. `ezcf` is still in developement. If you find any bug, please report
+1. ezcf is still in developement. If you find any bug, please report
 it in issues;
 2. Be careful importing YAML which contains multiple documents: if there exists keys with the same name,
 only one of them will be loaded;
