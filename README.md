@@ -40,12 +40,14 @@ from subdir.sample_yaml import *
 from subdir.sample_yaml import something
 # or
 import subdir.sample_yaml as sy
+print(sy.something)
 
 from sample_json import *
 # or
 from sample_json import something
 # or
 import sample_json as sj
+print(sj.something)
 ```
 You can assume they're just regular python files.(Currently ezcf only supports files with utf-8 encoding)
 
