@@ -1,10 +1,12 @@
+# coding: utf-8
 import os
 
+import codecs
 from setuptools import setup, find_packages
 
 def read():
     """Build a file path from *paths* and return the contents."""
-    with open(os.path.join('README.rst'), 'r') as f:
+    with codecs.open(os.path.join('README.rst'), 'r', "utf-8") as f:
         return f.read()
 
 setup(
