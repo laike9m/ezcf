@@ -12,7 +12,7 @@ class TestProto(unittest.TestCase):
     def test_import(self):
         from .. import sample_json
         self.assertEqual(sample_json.hello, "world")
-        self.assertEqual(sample_json.a_list, [1 ,2, 3])
+        self.assertEqual(sample_json.a_list, [1, 2, 3])
         self.assertEqual(sample_json.a_dict, {
             "key1": 1000,
             "key2": [u"你好", 100]
@@ -35,7 +35,7 @@ class TestProto(unittest.TestCase):
 
     def test_from_import(self):
         from ..sample_json import a_list, a_dict
-        self.assertEqual(a_list, [1 ,2, 3])
+        self.assertEqual(a_list, [1, 2, 3])
         self.assertEqual(a_dict, {
             "key1": 1000,
             "key2": [u"你好", 100]
@@ -63,7 +63,7 @@ class TestProto(unittest.TestCase):
         from ..sample_json import a_list as al
         from ..sample_json import a_dict as ad
         self.assertEqual(h, "world")
-        self.assertEqual(al, [1 ,2, 3])
+        self.assertEqual(al, [1, 2, 3])
         self.assertEqual(ad, {
             "key1": 1000,
             "key2": [u"你好", 100]
