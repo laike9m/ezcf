@@ -69,6 +69,7 @@ only one of them will be loaded;
 - [x] JSON support
 - [x] YAML support
 - [ ] INI support
+- [ ] XML support
 - [ ] Auto encoding detect?
 - [x] CI
 - [ ] coverage
