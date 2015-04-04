@@ -34,7 +34,7 @@ class IniLoader(BaseLoader):
         try:
             config = ConfigObj(self.cfg_file, encoding='UTF8',
                                raise_errors=True)
-            mod.__dict__.update({key: config[key] for key in config.keys()})
+            mod.__dict__.update(dict((k, config[k]) for k in config.keys()))
         except SyntaxError:
             self.e = "IniError"
             self.err_msg = sys.exc_info()[1]
