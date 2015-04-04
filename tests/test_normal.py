@@ -53,6 +53,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sample_yml.User, 'ed')
         self.assertEqual(sample_yml.warning,
                          'A slightly different error message.')
+        import sample_ini
+        self.assertEqual(sample_ini.keyword1, 'value1')
+        self.assertEqual(sample_ini.keyword2, 'value2')
+        self.assertDictEqual(
+            sample_ini.section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                },
+            }
+        )
+        self.assertDictEqual(sample_ini.section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import(self):
         from sample_json import a_list, a_dict
@@ -72,12 +92,35 @@ class TestProto(unittest.TestCase):
               {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
         self.assertEqual(Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(User, 'ed')
+        from sample_ini import keyword1
+        from sample_ini import section1
+        from sample_ini import section2
+        self.assertEqual(keyword1, 'value1')
+        self.assertDictEqual(
+            section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                },
+            }
+        )
+        self.assertDictEqual(section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(NameError):
                 print(hello)
             with self.assertRaises(NameError):
                 print(warning)
+            with self.assertRaises(NameError):
+                print(keyword2)
 
     def test_import_as(self):
         import sample_json as sj
@@ -99,6 +142,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sy.Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(sy.User, 'ed')
         self.assertEqual(sy.warning, u'一个 slightly different error message.')
+        import sample_ini as si
+        self.assertEqual(si.keyword1, 'value1')
+        self.assertEqual(si.keyword2, 'value2')
+        self.assertDictEqual(
+            si.section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                },
+            }
+        )
+        self.assertDictEqual(si.section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_as(self):
         from sample_json import hello as h
@@ -127,6 +190,27 @@ class TestProto(unittest.TestCase):
         self.assertEqual(t, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(u, 'ed')
         self.assertEqual(w, u'一个 slightly different error message.')
+        from sample_ini import keyword1 as k1
+        from sample_ini import keyword2 as k2
+        from sample_ini import section1 as s1
+        from sample_ini import section2 as s2
+        self.assertEqual(k1, 'value1')
+        self.assertEqual(k2, 'value2')
+        self.assertDictEqual(s1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                },
+            }
+        )
+        self.assertDictEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_import_subdir(self):
         import subdir.sample_json
@@ -151,6 +235,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(subdir.sample_yaml.User, 'ed')
         self.assertEqual(subdir.sample_yaml.warning,
                          'A slightly different error message.')
+        import subdir.sample_ini
+        self.assertEqual(subdir.sample_ini.keyword1, 'value1')
+        self.assertEqual(subdir.sample_ini.keyword2, 'value2')
+        self.assertDictEqual(
+            subdir.sample_ini.section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                        },
+                    },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                }
+        )
+        self.assertDictEqual(subdir.sample_ini.section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
 
     def test_from_import_subdir(self):
@@ -172,11 +276,36 @@ class TestProto(unittest.TestCase):
         self.assertEqual(Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(User, 'ed')
 
+        from subdir.sample_ini import keyword1
+        from subdir.sample_ini import section1
+        from subdir.sample_ini import section2
+        self.assertEqual(keyword1, 'value1')
+        self.assertDictEqual(
+            section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                        },
+                    },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                }
+        )
+        self.assertDictEqual(section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
+
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(NameError):
                 print(hello)
             with self.assertRaises(NameError):
                 print(warning)
+            with self.assertRaises(NameError):
+                print(keyword2)
+
 
     def test_import_as_subdir(self):
         import subdir.sample_json as sj
@@ -198,6 +327,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sy.Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(sy.User, 'ed')
         self.assertEqual(sy.warning, 'A slightly different error message.')
+        import subdir.sample_ini as si
+        self.assertEqual(si.keyword1, 'value1')
+        self.assertEqual(si.keyword2, 'value2')
+        self.assertDictEqual(
+            si.section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                        },
+                    },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                }
+        )
+        self.assertDictEqual(si.section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_as_subdir(self):
         from subdir.sample_json import hello as h
@@ -226,6 +375,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(t, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(u, 'ed')
         self.assertEqual(w, 'A slightly different error message.')
+        from subdir.sample_ini import keyword1 as k1
+        from subdir.sample_ini import keyword2 as k2
+        from subdir.sample_ini import section1 as s1
+        from subdir.sample_ini import section2 as s2
+        self.assertEqual(k1, 'value1')
+        self.assertEqual(k2, 'value2')
+        self.assertDictEqual(s1, {
+             'keyword1': 'value1', 'keyword2': 'value2',
+             'sub-section': {
+                 'keyword1': 'value1', 'keyword2': 'value2',
+                 'nested section': {
+                     'keyword1': 'value1', 'keyword2': 'value2',
+                     },
+                 },
+             'sub-section2': {
+                 'keyword1': 'value1', 'keyword2': 'value2',
+                 },
+             }
+        )
+        self.assertDictEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_import_subdir2(self):
         import subdir.subdir.sample_json
@@ -251,6 +420,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(subdir.subdir.sample_yaml.User, 'ed')
         self.assertEqual(subdir.subdir.sample_yaml.warning,
                          'A slightly different error message.')
+        import subdir.subdir.sample_ini
+        self.assertEqual(subdir.subdir.sample_ini.keyword1, 'value1')
+        self.assertEqual(subdir.subdir.sample_ini.keyword2, 'value2')
+        self.assertDictEqual(
+            subdir.subdir.sample_ini.section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                        },
+                    },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                }
+        )
+        self.assertDictEqual(subdir.subdir.sample_ini.section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_subdir2(self):
         from subdir.subdir.sample_json import a_list, a_dict
@@ -270,12 +459,35 @@ class TestProto(unittest.TestCase):
               {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
         self.assertEqual(Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(User, 'ed')
+        from subdir.subdir.sample_ini import keyword1
+        from subdir.subdir.sample_ini import section1
+        from subdir.subdir.sample_ini import section2
+        self.assertEqual(keyword1, 'value1')
+        self.assertDictEqual(
+            section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                        },
+                    },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                }
+        )
+        self.assertDictEqual(section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(NameError):
                 print(hello)
             with self.assertRaises(NameError):
                 print(warning)
+            with self.assertRaises(NameError):
+                print(keyword2)
 
     def test_import_as_subdir2(self):
         import subdir.subdir.sample_json as config
@@ -297,6 +509,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(sy.Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(sy.User, 'ed')
         self.assertEqual(sy.warning, 'A slightly different error message.')
+        import subdir.subdir.sample_ini as si
+        self.assertEqual(si.keyword1, 'value1')
+        self.assertEqual(si.keyword2, 'value2')
+        self.assertDictEqual(
+            si.section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                        },
+                    },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                }
+        )
+        self.assertDictEqual(si.section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_as_subdir2(self):
         from subdir.sample_json import hello as h
@@ -325,6 +557,26 @@ class TestProto(unittest.TestCase):
         self.assertEqual(t, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(u, 'ed')
         self.assertEqual(w, 'A slightly different error message.')
+        from subdir.subdir.sample_ini import keyword1 as k1
+        from subdir.subdir.sample_ini import keyword2 as k2
+        from subdir.subdir.sample_ini import section1 as s1
+        from subdir.subdir.sample_ini import section2 as s2
+        self.assertEqual(k1, 'value1')
+        self.assertEqual(k2, 'value2')
+        self.assertDictEqual(s1, {
+             'keyword1': 'value1', 'keyword2': 'value2',
+             'sub-section': {
+                 'keyword1': 'value1', 'keyword2': 'value2',
+                 'nested section': {
+                     'keyword1': 'value1', 'keyword2': 'value2',
+                     },
+                 },
+             'sub-section2': {
+                 'keyword1': 'value1', 'keyword2': 'value2',
+                 },
+             }
+        )
+        self.assertDictEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_invalid_json(self):
         from ezcf._base import InvalidJsonError
@@ -337,3 +589,9 @@ class TestProto(unittest.TestCase):
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(InvalidYamlError):
                 import invalid_yaml
+
+    def test_invalid_ini(self):
+        from ezcf._base import InvalidIniError
+        if sys.version_info[:2] > (2, 6):
+            with self.assertRaises(InvalidIniError):
+                import invalid_ini

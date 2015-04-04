@@ -12,6 +12,7 @@ except ImportError:
 
 from subdir.subdir.sample_json import *
 from subdir.subdir.sample_yaml import *
+from subdir.subdir.sample_ini import *
 
 
 class TestProto(unittest.TestCase):
@@ -34,3 +35,22 @@ class TestProto(unittest.TestCase):
         self.assertEqual(Time, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(User, 'ed')
         self.assertEqual(warning, 'A slightly different error message.')
+        self.assertEqual(keyword1, 'value1')
+        self.assertEqual(keyword2, 'value2')
+        self.assertDictEqual(
+            section1,
+            {
+                'keyword1': 'value1', 'keyword2': 'value2',
+                'sub-section': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    'nested section': {
+                        'keyword1': 'value1', 'keyword2': 'value2',
+                        },
+                    },
+                'sub-section2': {
+                    'keyword1': 'value1', 'keyword2': 'value2',
+                    },
+                }
+        )
+        self.assertDictEqual(section2,
+                             {'keyword1': 'value1', 'keyword2': 'value2'})

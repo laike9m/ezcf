@@ -32,10 +32,6 @@ class YamlLoader(BaseLoader):
         super(YamlLoader, self).__init__(*args, **kwargs)
 
     def load_module(self, fullname):
-        """
-        load_module is always called with the same argument as finder's
-        find_module, see "How Import Works"
-        """
         mod = super(YamlLoader, self).load_module(fullname)
 
         with codecs.open(self.cfg_file, 'r', 'utf-8') as f:
@@ -48,7 +44,7 @@ class YamlLoader(BaseLoader):
                 self.err_msg = sys.exc_info()[1]
 
         if self.e == "YAMLError":
-            err_msg = "\nYaml not valid: "
+            err_msg = "\nYaml file not valid: "
             err_msg += self.cfg_file + '\n'
             err_msg += str(self.err_msg)
             raise InvalidYamlError(err_msg)

@@ -45,7 +45,7 @@ class JsonLoader(BaseLoader):
             self.err_msg = sys.exc_info()[1]
 
         if self.e == "ValueError":
-            err_msg = "\nJson not valid: "
+            err_msg = "\nJson file not valid: "
             err_msg += self.cfg_file + '\n'
             err_msg += str(self.err_msg)
             raise InvalidJsonError(err_msg)

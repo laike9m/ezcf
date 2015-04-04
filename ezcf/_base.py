@@ -16,6 +16,10 @@ class InvalidYamlError(Exception):
     pass
 
 
+class InvalidIniError(Exception):
+    pass
+
+
 class _BaseClass(object):
     pass
 

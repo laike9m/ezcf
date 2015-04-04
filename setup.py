@@ -20,11 +20,11 @@ setup(
     author_email='laike9m@gmail.com',
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     package_data={'': ['README.md']},
-    keywords = ['config', 'import'],
+    keywords = ['config', 'import', 'JSON', 'YAML'],
     install_requires=['pyyaml'],
     include_package_data=True,
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'License :: OSI Approved :: MIT License',
