@@ -6,8 +6,11 @@ import os
 import datetime
 from pprint import pprint
 
-sys.path.append('../')
-import ezcf
+try:
+    import ezcf
+except ImportError:
+    sys.path.append('../')
+    import ezcf
 
 
 class TestProto(unittest.TestCase):

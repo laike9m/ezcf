@@ -4,8 +4,11 @@ import datetime
 import sys
 import unittest
 
-sys.path.append('../')
-import ezcf
+try:
+    import ezcf
+except ImportError:
+    sys.path.append('../')
+    import ezcf
 
 from sample_json import *
 from sample_yaml import *

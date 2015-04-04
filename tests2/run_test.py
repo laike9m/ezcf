@@ -2,7 +2,10 @@ import os
 import unittest
 import sys
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+try:
+    import ezcf
+except ImportError:
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from subdir.subdir.test_parent import *
 
