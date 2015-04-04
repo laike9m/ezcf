@@ -35,7 +35,7 @@ class TestProto(unittest.TestCase):
         from .. import sample_ini
         self.assertEqual(sample_ini.keyword1, 'value1')
         self.assertEqual(sample_ini.keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             sample_ini.section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -50,7 +50,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(sample_ini.section2,
+        self.assertEqual(sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import(self):
@@ -75,7 +75,7 @@ class TestProto(unittest.TestCase):
         from ..sample_ini import section1
         from ..sample_ini import section2
         self.assertEqual(keyword1, 'value1')
-        self.assertDictEqual(
+        self.assertEqual(
             section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -90,7 +90,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(section2,
+        self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
         if sys.version_info[:2] > (2, 6):
@@ -134,7 +134,7 @@ class TestProto(unittest.TestCase):
         from ..sample_ini import section2 as s2
         self.assertEqual(k1, 'value1')
         self.assertEqual(k2, 'value2')
-        self.assertDictEqual(s1, {
+        self.assertEqual(s1, {
              'keyword1': 'value1', 'keyword2': 'value2',
              'sub-section': {
                  'keyword1': 'value1', 'keyword2': 'value2',
@@ -147,4 +147,4 @@ class TestProto(unittest.TestCase):
                  },
              }
         )
-        self.assertDictEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})

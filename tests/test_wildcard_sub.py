@@ -37,7 +37,7 @@ class TestProto(unittest.TestCase):
         self.assertEqual(warning, 'A slightly different error message.')
         self.assertEqual(keyword1, 'value1')
         self.assertEqual(keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -52,5 +52,5 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(section2,
+        self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})

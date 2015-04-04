@@ -56,7 +56,7 @@ class TestProto(unittest.TestCase):
         import sample_ini
         self.assertEqual(sample_ini.keyword1, 'value1')
         self.assertEqual(sample_ini.keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             sample_ini.section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -71,7 +71,7 @@ class TestProto(unittest.TestCase):
                 },
             }
         )
-        self.assertDictEqual(sample_ini.section2,
+        self.assertEqual(sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import(self):
@@ -96,7 +96,7 @@ class TestProto(unittest.TestCase):
         from sample_ini import section1
         from sample_ini import section2
         self.assertEqual(keyword1, 'value1')
-        self.assertDictEqual(
+        self.assertEqual(
             section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -111,7 +111,7 @@ class TestProto(unittest.TestCase):
                 },
             }
         )
-        self.assertDictEqual(section2,
+        self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
         if sys.version_info[:2] > (2, 6):
@@ -145,7 +145,7 @@ class TestProto(unittest.TestCase):
         import sample_ini as si
         self.assertEqual(si.keyword1, 'value1')
         self.assertEqual(si.keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             si.section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -160,7 +160,7 @@ class TestProto(unittest.TestCase):
                 },
             }
         )
-        self.assertDictEqual(si.section2,
+        self.assertEqual(si.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_as(self):
@@ -196,7 +196,7 @@ class TestProto(unittest.TestCase):
         from sample_ini import section2 as s2
         self.assertEqual(k1, 'value1')
         self.assertEqual(k2, 'value2')
-        self.assertDictEqual(s1,
+        self.assertEqual(s1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
                 'sub-section': {
@@ -210,7 +210,7 @@ class TestProto(unittest.TestCase):
                 },
             }
         )
-        self.assertDictEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_import_subdir(self):
         import subdir.sample_json
@@ -238,7 +238,7 @@ class TestProto(unittest.TestCase):
         import subdir.sample_ini
         self.assertEqual(subdir.sample_ini.keyword1, 'value1')
         self.assertEqual(subdir.sample_ini.keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             subdir.sample_ini.section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -253,7 +253,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(subdir.sample_ini.section2,
+        self.assertEqual(subdir.sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
 
@@ -280,7 +280,7 @@ class TestProto(unittest.TestCase):
         from subdir.sample_ini import section1
         from subdir.sample_ini import section2
         self.assertEqual(keyword1, 'value1')
-        self.assertDictEqual(
+        self.assertEqual(
             section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -295,7 +295,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(section2,
+        self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
         if sys.version_info[:2] > (2, 6):
@@ -330,7 +330,7 @@ class TestProto(unittest.TestCase):
         import subdir.sample_ini as si
         self.assertEqual(si.keyword1, 'value1')
         self.assertEqual(si.keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             si.section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -345,7 +345,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(si.section2,
+        self.assertEqual(si.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_as_subdir(self):
@@ -381,7 +381,7 @@ class TestProto(unittest.TestCase):
         from subdir.sample_ini import section2 as s2
         self.assertEqual(k1, 'value1')
         self.assertEqual(k2, 'value2')
-        self.assertDictEqual(s1, {
+        self.assertEqual(s1, {
              'keyword1': 'value1', 'keyword2': 'value2',
              'sub-section': {
                  'keyword1': 'value1', 'keyword2': 'value2',
@@ -394,7 +394,7 @@ class TestProto(unittest.TestCase):
                  },
              }
         )
-        self.assertDictEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_import_subdir2(self):
         import subdir.subdir.sample_json
@@ -423,7 +423,7 @@ class TestProto(unittest.TestCase):
         import subdir.subdir.sample_ini
         self.assertEqual(subdir.subdir.sample_ini.keyword1, 'value1')
         self.assertEqual(subdir.subdir.sample_ini.keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             subdir.subdir.sample_ini.section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -438,7 +438,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(subdir.subdir.sample_ini.section2,
+        self.assertEqual(subdir.subdir.sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_subdir2(self):
@@ -463,7 +463,7 @@ class TestProto(unittest.TestCase):
         from subdir.subdir.sample_ini import section1
         from subdir.subdir.sample_ini import section2
         self.assertEqual(keyword1, 'value1')
-        self.assertDictEqual(
+        self.assertEqual(
             section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -478,7 +478,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(section2,
+        self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
         if sys.version_info[:2] > (2, 6):
@@ -512,7 +512,7 @@ class TestProto(unittest.TestCase):
         import subdir.subdir.sample_ini as si
         self.assertEqual(si.keyword1, 'value1')
         self.assertEqual(si.keyword2, 'value2')
-        self.assertDictEqual(
+        self.assertEqual(
             si.section1,
             {
                 'keyword1': 'value1', 'keyword2': 'value2',
@@ -527,7 +527,7 @@ class TestProto(unittest.TestCase):
                     },
                 }
         )
-        self.assertDictEqual(si.section2,
+        self.assertEqual(si.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_from_import_as_subdir2(self):
@@ -563,7 +563,7 @@ class TestProto(unittest.TestCase):
         from subdir.subdir.sample_ini import section2 as s2
         self.assertEqual(k1, 'value1')
         self.assertEqual(k2, 'value2')
-        self.assertDictEqual(s1, {
+        self.assertEqual(s1, {
              'keyword1': 'value1', 'keyword2': 'value2',
              'sub-section': {
                  'keyword1': 'value1', 'keyword2': 'value2',
@@ -576,7 +576,7 @@ class TestProto(unittest.TestCase):
                  },
              }
         )
-        self.assertDictEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
 
     def test_invalid_json(self):
         from ezcf._base import InvalidJsonError
