@@ -1,7 +1,7 @@
 ezcf
 ====
 
-|Build Status| |Supported Python versions| |Latest Version| |Development
+|Build Status| |Supported Python versions| |PyPI version| |Development
 Status|
 
 ezcf stands for **easy configuration**, it allows you to import
@@ -108,7 +108,7 @@ MIT
    :target: https://travis-ci.org/laike9m/ezcf
 .. |Supported Python versions| image:: https://pypip.in/py_versions/ezcf/badge.svg
    :target: https://pypi.python.org/pypi/ezcf/
-.. |Latest Version| image:: https://pypip.in/version/ezcf/badge.svg
-   :target: https://pypi.python.org/pypi/ezcf/
+.. |PyPI version| image:: https://badge.fury.io/py/ezcf.svg
+   :target: http://badge.fury.io/py/ezcf
 .. |Development Status| image:: https://pypip.in/status/ezcf/badge.svg
    :target: https://pypi.python.org/pypi/ezcf/

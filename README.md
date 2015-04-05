@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/laike9m/ezcf.svg)](https://travis-ci.org/laike9m/ezcf)
 [![Supported Python versions](https://pypip.in/py_versions/ezcf/badge.svg)](https://pypi.python.org/pypi/ezcf/)
-[![Latest Version](https://pypip.in/version/ezcf/badge.svg)](https://pypi.python.org/pypi/ezcf/)
+[![PyPI version](https://badge.fury.io/py/ezcf.svg)](http://badge.fury.io/py/ezcf)
 [![Development Status](https://pypip.in/status/ezcf/badge.svg)](https://pypi.python.org/pypi/ezcf/)
 
 ezcf stands for **easy configuration**, it allows you to import JSON/YAML
