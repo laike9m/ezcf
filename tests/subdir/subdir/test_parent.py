@@ -7,7 +7,7 @@ import unittest
 import ezcf
 
 
-class TestProto(unittest.TestCase):
+class TestParent(unittest.TestCase):
 
     def test_import(self):
         from .. import sample_json
@@ -31,7 +31,7 @@ class TestProto(unittest.TestCase):
                          datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(sample_yaml.User, 'ed')
         self.assertEqual(sample_yaml.warning,
-                         u'一个 slightly different error message.')
+                         u'A slightly different error message.')
         from .. import sample_ini
         self.assertEqual(sample_ini.keyword1, 'value1')
         self.assertEqual(sample_ini.keyword2, 'value2')
@@ -127,7 +127,7 @@ class TestProto(unittest.TestCase):
              {'code': 'foo = bar', 'file': 'MoreClass.py', 'line': 58}])
         self.assertEqual(t, datetime.datetime(2001, 11, 23, 20, 2, 31))
         self.assertEqual(u, 'ed')
-        self.assertEqual(w, u'一个 slightly different error message.')
+        self.assertEqual(w, u'A slightly different error message.')
         from ..sample_ini import keyword1 as k1
         from ..sample_ini import keyword2 as k2
         from ..sample_ini import section1 as s1

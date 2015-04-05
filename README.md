@@ -55,7 +55,6 @@ print(sj.something)
 You can assume they're just regular python files.(Currently ezcf only supports files with utf-8 encoding)
 
 What about relative import? Yes, ezcf supports relative import, as long as you use it *correctly*.
-See [tests2](https://github.com/laike9m/ezcf/tree/master/tests2) for an example.
 
 Something to note before using ezcf:
 
