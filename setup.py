@@ -45,7 +45,9 @@ setup(
         'configobj==5.0.6'
     ],
     tests_require=['coverage'],
-    extras_require=['coveralls'],
+    extras_require={
+        'coveralls': ['coveralls']
+    },
     cmdclass={
         'test': PyTest,
     },
