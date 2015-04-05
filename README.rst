@@ -1,7 +1,7 @@
 ezcf
 ====
 
-|Build Status| |Supported Python versions| |PyPI version| |Development
+|Build Status| |Supported Python versions| |PyPI version| |Coverage
 Status|
 
 ezcf stands for **easy configuration**, it allows you to import
@@ -70,9 +70,7 @@ You can assume they're just regular python files.(Currently ezcf only
 supports files with utf-8 encoding)
 
 What about relative import? Yes, ezcf supports relative import, as long
-as you use it *correctly*. See
-`tests2 <https://github.com/laike9m/ezcf/tree/master/tests2>`__ for an
-example.
+as you use it *correctly*.
 
 Something to note before using ezcf:
 
@@ -84,6 +82,13 @@ Something to note before using ezcf:
 3. All values in ``.ini`` files are kept as it is and loaded as a
    string;
 4. Namespace package is not supported yet, pull requests are welcome.
+
+Run Tests
+---------
+
+::
+
+    python setup.py test
 
 Roadmap
 -------
@@ -110,5 +115,5 @@ MIT
    :target: https://pypi.python.org/pypi/ezcf/
 .. |PyPI version| image:: https://badge.fury.io/py/ezcf.svg
    :target: http://badge.fury.io/py/ezcf
-.. |Development Status| image:: https://pypip.in/status/ezcf/badge.svg
-   :target: https://pypi.python.org/pypi/ezcf/
+.. |Coverage Status| image:: https://coveralls.io/repos/laike9m/ezcf/badge.svg
+   :target: https://coveralls.io/r/laike9m/ezcf

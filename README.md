@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/laike9m/ezcf.svg)](https://travis-ci.org/laike9m/ezcf)
 [![Supported Python versions](https://pypip.in/py_versions/ezcf/badge.svg)](https://pypi.python.org/pypi/ezcf/)
 [![PyPI version](https://badge.fury.io/py/ezcf.svg)](http://badge.fury.io/py/ezcf)
-[![Development Status](https://pypip.in/status/ezcf/badge.svg)](https://pypi.python.org/pypi/ezcf/)
+[![Coverage Status](https://coveralls.io/repos/laike9m/ezcf/badge.svg)](https://coveralls.io/r/laike9m/ezcf)
 
 ezcf stands for **easy configuration**, it allows you to import JSON/YAML
 like importing .py files, which is very useful for reading conf files with these formats.
@@ -64,6 +64,11 @@ it in issues;
 only one of them will be loaded. So it's better not to use multiple documents;
 3. All values in `.ini` files are kept as it is and loaded as a string;
 4. Namespace package is not supported yet, pull requests are welcome.
+
+## Run Tests
+```
+python setup.py test
+```
 
 ## Roadmap
 
