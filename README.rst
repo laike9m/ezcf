@@ -92,7 +92,7 @@ Roadmap
 -  [x] Unicode support
 -  [x] JSON support
 -  [x] YAML support
--  [ ] INI support
+-  [x] INI support
 -  [ ] XML support
 -  [ ] Auto encoding detect?
 -  [x] CI
