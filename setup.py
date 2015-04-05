@@ -21,7 +21,10 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     package_data={'': ['README.md']},
     keywords = ['config', 'import', 'JSON', 'YAML', 'INI'],
-    install_requires=['pyyaml'],
+    install_requires=[
+        'pyyaml==3.11',
+        'configobj==5.0.6'
+    ],
     include_package_data=True,
     classifiers=[
         'Development Status :: 3 - Alpha',
