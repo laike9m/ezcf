@@ -5,8 +5,8 @@
 [![PyPI version](https://badge.fury.io/py/ezcf.svg)](http://badge.fury.io/py/ezcf)
 [![Coverage Status](https://coveralls.io/repos/laike9m/ezcf/badge.svg)](https://coveralls.io/r/laike9m/ezcf)
 
-ezcf stands for **easy configuration**, it allows you to import JSON/YAML
-like importing .py files, which is very useful for reading conf files with these formats.
+ezcf stands for **easy configuration**, it allows you to import JSON/YAML/INI
+like .py files, which is very useful for reading conf files with these formats.
 
 OK, stop talking, show us some code!  
 
@@ -80,7 +80,7 @@ python setup.py test
 - [ ] XML support
 - [ ] Auto encoding detect?
 - [x] CI
-- [ ] coverage
+- [x] coverage
 - [x] pypi
 
 ## License

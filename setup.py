@@ -31,7 +31,7 @@ class PyTest(TestCommand):
 setup(
     name='ezcf',
     version='0.1.0',
-    description='Import JSON/YAML like importing .py files',
+    description='Import JSON/YAML/INI like importing .py files',
     long_description=read(),
     url='http://github.com/laike9m/ezcf/',
     license='MIT',
