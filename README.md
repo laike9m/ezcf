@@ -6,7 +6,8 @@
 [![Coverage Status](https://coveralls.io/repos/laike9m/ezcf/badge.svg)](https://coveralls.io/r/laike9m/ezcf)
 
 ezcf stands for **easy configuration**, it allows you to import JSON/YAML/INI
-like .py files, which is very useful for reading conf files with these formats.
+like .py files. It is useful whenever you need to read from these formats,
+especially for reading configuration files.
 
 OK, stop talking, show us some code!  
 
