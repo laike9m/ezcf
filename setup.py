@@ -26,7 +26,16 @@ class PyTest(TestCommand):
         setup_dir = os.path.abspath(os.path.dirname(setup_file))
         tests = unittest.TestLoader().discover(
             os.path.join(setup_dir, 'tests'), pattern='*.py')
-        unittest.TextTestRunner().run(tests)
+        try:
+            # https://github.com/CleanCut/green/issues/50
+            from green.runner import run
+            from green.suite import GreenTestSuite
+            from green.config import default_args
+            default_args.verbose = 3
+            run(GreenTestSuite(tests), sys.stdout, default_args)
+        except ImportError:
+            unittest.TextTestRunner(verbosity=2).run(tests)
+
 
 setup(
     name='ezcf',
