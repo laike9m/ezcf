@@ -1,12 +1,13 @@
 from .type_json import JsonFinder
 from .type_yaml import YamlFinder
 from .type_ini import IniFinder
+from .type_xml import XmlFinder
 
 
 class ConfigFinder(object):
 
     def __init__(self):
-        self.finders = [JsonFinder(), YamlFinder(), IniFinder()]
+        self.finders = [JsonFinder(), YamlFinder(), IniFinder(), XmlFinder()]
 
     def find_module(self, fullname, path=None):
         for finder in self.finders:

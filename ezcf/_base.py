@@ -20,6 +20,10 @@ class InvalidIniError(Exception):
     pass
 
 
+class InvalidXmlError(Exception):
+    pass
+
+
 class _BaseClass(object):
     pass
 

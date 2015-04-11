@@ -23,7 +23,7 @@ If you run into `error: yaml.h: No such file or directory`, don't worry,
 you can still use ezcf without any problem.
 
 ## Supported File Types
-Currently ezcf supports `JSON`, `YAML` and `INI` with extension `json`, `yaml`, `yml`, `ini`.
+ezcf supports `JSON`, `YAML`, `INI` and `XML` with extension `json`, `yaml`, `yml`, `ini`, `xml`.
 
 ## Sample Usage
 ezcf supports all kinds of valid import statements, here's an example:
@@ -64,7 +64,8 @@ it in issues;
 2. Be careful importing YAML which contains multiple documents: if there exists keys with the same name,
 only one of them will be loaded. So it's better not to use multiple documents;
 3. All values in `.ini` files are kept as it is and loaded as a string;
-4. Namespace package is not supported yet, pull requests are welcome.
+4. Since XML only allows single root, the whole xml will be loaded as one dict with root's name as variable name;
+5. Namespace package is not supported yet, pull requests are welcome.
 
 ## Run Tests
 ```
@@ -78,7 +79,7 @@ python setup.py test
 - [x] JSON support
 - [x] YAML support
 - [x] INI support
-- [ ] XML support
+- [x] XML support
 - [ ] Auto encoding detect?
 - [x] CI
 - [x] coverage

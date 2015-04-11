@@ -39,8 +39,8 @@ class PyTest(TestCommand):
 
 setup(
     name='ezcf',
-    version='0.1.0',
-    description='Import JSON/YAML/INI like importing .py files',
+    version='0.2.0',
+    description='Import JSON/YAML/INI/XML like .py files',
     long_description=read(),
     url='http://github.com/laike9m/ezcf/',
     license='MIT',
@@ -48,10 +48,11 @@ setup(
     author_email='laike9m@gmail.com',
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     package_data={'': ['README.md']},
-    keywords = ['config', 'import', 'JSON', 'YAML', 'INI'],
+    keywords=['config', 'import', 'JSON', 'YAML', 'INI', 'XML'],
     install_requires=[
         'pyyaml==3.11',
-        'configobj==5.0.6'
+        'configobj==5.0.6',
+        'xmltodict==0.9.2'
     ],
     tests_require=['coverage'],
     extras_require={

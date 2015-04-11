@@ -52,6 +52,9 @@ class TestParent(unittest.TestCase):
         )
         self.assertEqual(sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        from .. import sample_xml
+        self.assertEqual(sample_xml.note, {"to": u"我", "from": "you"})
+
 
     def test_from_import(self):
         from ..sample_json import a_list, a_dict
@@ -92,6 +95,8 @@ class TestParent(unittest.TestCase):
         )
         self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        from ..sample_xml import note
+        self.assertEqual(note, {"to": u"我", "from": "you"})
 
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(NameError):
@@ -148,3 +153,5 @@ class TestParent(unittest.TestCase):
              }
         )
         self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        from ..sample_xml import note as no
+        self.assertEqual(no, {"to": u"我", "from": "you"})

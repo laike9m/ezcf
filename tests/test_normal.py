@@ -73,6 +73,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        import sample_xml
+        self.assertEqual(sample_xml.note, {"to": u"我", "from": "you"})
 
     def test_from_import(self):
         from sample_json import a_list, a_dict
@@ -113,6 +115,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        from sample_xml import note
+        self.assertEqual(note, {"to": u"我", "from": "you"})
 
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(NameError):
@@ -162,6 +166,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(si.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        import sample_xml as sx
+        self.assertEqual(sx.note, {"to": u"我", "from": "you"})
 
     def test_from_import_as(self):
         from sample_json import hello as h
@@ -211,6 +217,8 @@ class TestProto(unittest.TestCase):
             }
         )
         self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        from sample_xml import note as no
+        self.assertEqual(no, {"to": u"我", "from": "you"})
 
     def test_import_subdir(self):
         import subdir.sample_json
@@ -255,6 +263,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(subdir.sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        import subdir.sample_xml
+        self.assertEqual(subdir.sample_xml.note, {"to": u"我", "from": "you"})
 
 
     def test_from_import_subdir(self):
@@ -297,6 +307,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        from subdir.sample_xml import note
+        self.assertEqual(note, {"to": u"我", "from": "you"})
 
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(NameError):
@@ -347,6 +359,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(si.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        import subdir.sample_xml as sx
+        self.assertEqual(sx.note, {"to": u"我", "from": "you"})
 
     def test_from_import_as_subdir(self):
         from subdir.sample_json import hello as h
@@ -395,6 +409,8 @@ class TestProto(unittest.TestCase):
              }
         )
         self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        from subdir.sample_xml import note as no
+        self.assertEqual(no, {"to": u"我", "from": "you"})
 
     def test_import_subdir2(self):
         import subdir.subdir.sample_json
@@ -440,6 +456,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(subdir.subdir.sample_ini.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        import subdir.subdir.sample_xml
+        self.assertEqual(subdir.subdir.sample_xml.note, {"to": u"我", "from": "you"})
 
     def test_from_import_subdir2(self):
         from subdir.subdir.sample_json import a_list, a_dict
@@ -480,6 +498,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        from subdir.subdir.sample_xml import note
+        self.assertEqual(note, {"to": u"我", "from": "you"})
 
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(NameError):
@@ -529,6 +549,8 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(si.section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        import subdir.subdir.sample_xml as sx
+        self.assertEqual(sx.note, {"to": u"我", "from": "you"})
 
     def test_from_import_as_subdir2(self):
         from subdir.sample_json import hello as h
@@ -577,6 +599,8 @@ class TestProto(unittest.TestCase):
              }
         )
         self.assertEqual(s2, {'keyword1': 'value1', 'keyword2': 'value2'})
+        from subdir.subdir.sample_xml import note as no
+        self.assertEqual(no, {"to": u"我", "from": "you"})
 
     def test_invalid_json(self):
         from ezcf._base import InvalidJsonError
@@ -595,3 +619,9 @@ class TestProto(unittest.TestCase):
         if sys.version_info[:2] > (2, 6):
             with self.assertRaises(InvalidIniError):
                 import invalid_ini
+
+    def test_invalid_xml(self):
+        from ezcf._base import InvalidXmlError
+        if sys.version_info[:2] > (2, 6):
+            with self.assertRaises(InvalidXmlError):
+                import invalid_xml

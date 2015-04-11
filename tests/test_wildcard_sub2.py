@@ -13,6 +13,7 @@ except ImportError:
 from subdir.subdir.sample_json import *
 from subdir.subdir.sample_yaml import *
 from subdir.subdir.sample_ini import *
+from subdir.subdir.sample_xml import *
 
 
 class TestProto(unittest.TestCase):
@@ -54,3 +55,4 @@ class TestProto(unittest.TestCase):
         )
         self.assertEqual(section2,
                              {'keyword1': 'value1', 'keyword2': 'value2'})
+        self.assertEqual(note, {"to": u"我", "from": "you"})
