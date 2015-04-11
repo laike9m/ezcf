@@ -5,7 +5,7 @@
 [![PyPI version](https://badge.fury.io/py/ezcf.svg)](http://badge.fury.io/py/ezcf)
 [![Coverage Status](https://coveralls.io/repos/laike9m/ezcf/badge.svg)](https://coveralls.io/r/laike9m/ezcf)
 
-ezcf stands for **easy configuration**, it allows you to import JSON/YAML/INI
+ezcf stands for **easy configuration**, it allows you to import JSON/YAML/INI/XML
 like .py files. It is useful whenever you need to read from these formats,
 especially for reading configuration files.
 

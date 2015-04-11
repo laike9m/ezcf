@@ -5,7 +5,7 @@ ezcf
 Status|
 
 ezcf stands for **easy configuration**, it allows you to import
-JSON/YAML/INI like .py files. It is useful whenever you need to read
+JSON/YAML/INI/XML like .py files. It is useful whenever you need to read
 from these formats, especially for reading configuration files.
 
 OK, stop talking, show us some code!
