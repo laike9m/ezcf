@@ -16,7 +16,7 @@ On the left is what you'll normally do, on the right is the ezcf way.
 
 ![](https://github.com/laike9m/ezcf/raw/master/code_compare.png)
 
-For instance, here we want to load file `config.json`. With a single line of code `import config`,
+For instance, here we want to load file `config.json`. With a single line of code `from config import *`,
 everything is done and you're happy.
 
 ## Install

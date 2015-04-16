@@ -18,7 +18,8 @@ without extension.** Nothing else!
    :alt: 
 
 For instance, here we want to load file ``config.json``. With a single
-line of code ``import config``, everything is done and you're happy.
+line of code ``from config import *``, everything is done and you're
+happy.
 
 Install
 -------
@@ -118,7 +119,7 @@ Roadmap
 License
 -------
 
-MMIT
+MIT
 
 .. |Build Status| image:: https://travis-ci.org/laike9m/ezcf.svg
    :target: https://travis-ci.org/laike9m/ezcf
