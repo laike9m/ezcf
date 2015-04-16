@@ -10,11 +10,15 @@ from these formats, especially for reading configuration files.
 
 OK, stop talking, show us some code!
 
-On the left is what you'll normally do, on the right is the ezcf way.
-Much more elegant isn't it?
+| On the left is what you'll normally do, on the right is the ezcf way.
+| **All you need is ``import ezcf`` first, then ``import filename``
+without extension.** Nothing else!
 
 .. figure:: https://github.com/laike9m/ezcf/raw/master/code_compare.png
    :alt: 
+
+For instance, here we want to load file ``config.json``. With a single
+line of code ``import config``, everything is done and you're happy.
 
 Install
 -------
@@ -84,6 +88,11 @@ Something to note before using ezcf:
 4. Since XML only allows single root, the whole xml will be loaded as
    one dict with root's name as variable name;
 5. Namespace package is not supported yet, pull requests are welcome.
+6. Use `**valid variable
+   names** <https://docs.python.org/3.4/reference/lexical_analysis.html#identifiers>`__,
+   this means key strings in JSON/YAML/INI/XML should be valid Python
+   variable name. Invalid variable name won't do any harm to your
+   program nor will it crash, but you can't use them as expected.
 
 Run Tests
 ---------
@@ -109,7 +118,7 @@ Roadmap
 License
 -------
 
-MIT
+MMIT
 
 .. |Build Status| image:: https://travis-ci.org/laike9m/ezcf.svg
    :target: https://travis-ci.org/laike9m/ezcf
