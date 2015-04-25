@@ -63,14 +63,11 @@ What about relative import? Yes, ezcf supports relative import, as long as you u
 
 Something to note before using ezcf:
 
-1. ezcf is still in developement. If you find any bug, please report
-it in issues;
-2. Be careful importing YAML which contains multiple documents: if there exists keys with the same name,
+1. Be careful importing YAML which contains multiple documents: if there exists keys with the same name,
 only one of them will be loaded. So it's better not to use multiple documents;
-3. All values in `.ini` files are kept as it is and loaded as a string;
-4. Since XML only allows single root, the whole xml will be loaded as one dict with root's name as variable name;
-5. Namespace package is not supported yet, pull requests are welcome.
-6. Use [**valid variable names**][1], this means key strings in JSON/YAML/INI/XML should be valid Python variable name.
+2. All values in `.ini` files are kept as it is and loaded as a string;
+3. Since XML only allows single root, the whole xml will be loaded as one dict with root's name as variable name;
+4. Use [**valid variable names**][1], this means key strings in JSON/YAML/INI/XML should be valid Python variable name.
  Invalid variable name won't do any harm to your program nor will it crash, but you can't use them as expected.
 
 ## Run Tests

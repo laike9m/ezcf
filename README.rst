@@ -79,17 +79,14 @@ as you use it *correctly*.
 
 Something to note before using ezcf:
 
-1. ezcf is still in developement. If you find any bug, please report it
-   in issues;
-2. Be careful importing YAML which contains multiple documents: if there
+1. Be careful importing YAML which contains multiple documents: if there
    exists keys with the same name, only one of them will be loaded. So
    it's better not to use multiple documents;
-3. All values in ``.ini`` files are kept as it is and loaded as a
+2. All values in ``.ini`` files are kept as it is and loaded as a
    string;
-4. Since XML only allows single root, the whole xml will be loaded as
+3. Since XML only allows single root, the whole xml will be loaded as
    one dict with root's name as variable name;
-5. Namespace package is not supported yet, pull requests are welcome.
-6. Use `**valid variable
+4. Use `**valid variable
    names** <https://docs.python.org/3.4/reference/lexical_analysis.html#identifiers>`__,
    this means key strings in JSON/YAML/INI/XML should be valid Python
    variable name. Invalid variable name won't do any harm to your
