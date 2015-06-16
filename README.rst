@@ -12,7 +12,7 @@ OK, stop talking, show us some code!
 
 | On the left is what you'll normally do, on the right is the ezcf way.
 | **All you need is ``import ezcf`` first, then ``import filename``
-without extension.** Nothing else!
+  without extension.** Nothing else!
 
 .. figure:: https://github.com/laike9m/ezcf/raw/master/code_compare.png
    :alt: 
@@ -120,7 +120,7 @@ MIT
 
 .. |Build Status| image:: https://travis-ci.org/laike9m/ezcf.svg
    :target: https://travis-ci.org/laike9m/ezcf
-.. |Supported Python versions| image:: https://pypip.in/py_versions/ezcf/badge.svg
+.. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/ezcf.svg
    :target: https://pypi.python.org/pypi/ezcf/
 .. |PyPI version| image:: https://badge.fury.io/py/ezcf.svg
    :target: http://badge.fury.io/py/ezcf

@@ -1,7 +1,7 @@
 # ezcf
 
 [![Build Status](https://travis-ci.org/laike9m/ezcf.svg)](https://travis-ci.org/laike9m/ezcf)
-[![Supported Python versions](https://pypip.in/py_versions/ezcf/badge.svg)](https://pypi.python.org/pypi/ezcf/)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/ezcf.svg)](https://pypi.python.org/pypi/ezcf/)
 [![PyPI version](https://badge.fury.io/py/ezcf.svg)](http://badge.fury.io/py/ezcf)
 [![Coverage Status](https://coveralls.io/repos/laike9m/ezcf/badge.svg)](https://coveralls.io/r/laike9m/ezcf)
 
