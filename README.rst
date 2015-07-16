@@ -88,10 +88,6 @@ Why not?
     warning:
       This is a warning.
     ---
-    Date: 2001-11-23 15:03:17 -5
-    User: ed
-    Fatal:
-      Unknown variable "bar"
     Stack:
       - file: TopClass.py
         line: 23
