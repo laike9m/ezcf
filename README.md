@@ -30,38 +30,90 @@ you can still use ezcf without any problem.
 ezcf supports `JSON`, `YAML`, `INI` and `XML` with extension `json`, `yaml`, `yml`, `ini`, `xml`.
 
 ## Sample Usage
-ezcf supports all kinds of valid import statements, here's an example:
+Let's start with an easy case:
+
 ```
-├── subdir
-│   ├── __init__.py
-│   └── sample_yaml.yaml
-├── test_normal.py
-└── sample_json.json
+├── sample1.py
+└── sample1.json  
 ```
 
-Various ways to use configurations in `sample_yaml.yaml` and `sample_json.json`:
+`sample1.py` and `sample1.json` are in the same directory. We want to read `sample1.json` in `sample1.py`, here's how:
+
 ```python
+"""
+# sample1.json
+{
+    "hello": "world"
+}
+"""
+
+# sample1.py
 import ezcf
+from sample1 import hello
 
-from subdir.sample_yaml import *
-# or
-from subdir.sample_yaml import something
-# or
-import subdir.sample_yaml as sy
-print(sy.something)
-
-from sample_json import *
-# or
-from sample_json import something
-# or
-import sample_json as sj
-print(sj.something)
+print(hello)  # 'world'
 ```
-You can assume they're just regular python files.(Currently ezcf only supports files with utf-8 encoding)
+It's that easy.
+
+<br>
+That's cool, but we usually put config files in a separate folder. Can ezcf deal with that?
+ 
+```
+├── conf
+│   ├── __init__.py
+│   └── sample2.yaml
+└── sample2.py
+```
+Why not?  
+
+```python
+"""sample2.yaml
+---
+Time: 2001-11-23 15:02:31 -5
+User: ed
+warning:
+  This is a warning.
+---
+Date: 2001-11-23 15:03:17 -5
+User: ed
+Fatal:
+  Unknown variable "bar"
+Stack:
+  - file: TopClass.py
+    line: 23
+    code: |
+      x = MoreObject("345\n")
+  - file: MoreClass.py
+    line: 58
+    code: |-
+      foo = bar
+"""
+
+# sample2.py
+import ezcf
+from conf.sample2 import Time, User, warning, Stack
+
+Time  # datetime.datetime(2001, 11, 23, 20, 2, 31)
+User  # ed
+warning  # This is a warning.
+Stack  # [{'line': 23, 'code': 'x = MoreObject("345\\n")\n', 'file': 'TopClass.py'}, {'line': 58, 'code': 'foo = bar', 'file': 'MoreClass.py'}]
+
+```
+
+ezcf supports all kinds of valid import statements. These statements are equivalent:
+
+```python
+from conf.sample2 import Time, User, warning, Stack
+from conf.sample2 import *
+import conf.sample2  # then use conf.sample2.Time/User/warning/Stack
+import conf.sample2 as cs  # then use cs.Time/User/warning/Stack
+```
+
+In a word, you can assume they're just regular python files.(Currently ezcf only supports files with utf-8 encoding)
 
 What about relative import? Yes, ezcf supports relative import, as long as you use it *correctly*.
 
-Something to note before using ezcf:
+## Note
 
 1. Be careful importing YAML which contains multiple documents: if there exists keys with the same name,
 only one of them will be loaded. So it's better not to use multiple documents;
