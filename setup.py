@@ -39,7 +39,7 @@ class PyTest(TestCommand):
 
 setup(
     name='ezcf',
-    version='0.2.0',
+    version='0.2.1',
     description='Import JSON/YAML/INI/XML like .py files',
     long_description=read(),
     url='http://github.com/laike9m/ezcf/',
