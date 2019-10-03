@@ -50,7 +50,7 @@ setup(
     package_data={'': ['README.md']},
     keywords=['config', 'import', 'JSON', 'YAML', 'INI', 'XML'],
     install_requires=[
-        'pyyaml==3.11',
+        'pyyaml==5.1',
         'configobj==5.0.6',
         'xmltodict==0.9.2'
     ],
