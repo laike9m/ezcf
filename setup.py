@@ -19,11 +19,7 @@ class PyTest(TestCommand):
 
     def run_tests(self):
         import sys
-
-        if sys.version_info[:2] == (2, 6):
-            import unittest2 as unittest  # Python 2.6
-        else:
-            import unittest
+        import unittest
 
         setup_file = sys.modules["__main__"].__file__
         setup_dir = os.path.abspath(os.path.dirname(setup_file))
@@ -71,6 +67,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Programming Language :: Python :: Implementation :: CPython",
